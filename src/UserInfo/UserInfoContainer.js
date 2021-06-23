@@ -17,6 +17,12 @@ export function UserInfoContainer(props) {
             return jsonResponse.results[0];
         } catch (e) {
             console.error(e);
+            return {
+                name: {
+                    first:'',
+                    last:''
+                }
+            };
         }
     }
 
