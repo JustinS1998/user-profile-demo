@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { UserInfo } from './UserInfo';
+import { UserInfoCard } from './UserInfoCard';
 
 export function UserInfoContainer(props) {
-    const [user, setUser] = useState({
-        name: {
-            first: '',
-            last: ''
+    const emptyUser = {
+        name:{
+            first:'',
+            last:''
+        },
+        picture:{
+            large:'',
+            medium:'',
+            thumnail:''
         }
-    });
+    };
+    const [user, setUser] = useState(emptyUser);
 
     const getRandomUser = async () => {
         const url = 'https://randomuser.me/api';
@@ -17,12 +23,7 @@ export function UserInfoContainer(props) {
             return jsonResponse.results[0];
         } catch (e) {
             console.error(e);
-            return {
-                name: {
-                    first:'',
-                    last:''
-                }
-            };
+            return emptyUser;
         }
     }
 
@@ -32,8 +33,8 @@ export function UserInfoContainer(props) {
     }, []);
 
     return (
-        <UserInfo 
+        <UserInfoCard 
         user={user}
-        ></UserInfo>
+        ></UserInfoCard>
     );
 }
