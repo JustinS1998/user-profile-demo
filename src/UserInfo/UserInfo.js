@@ -1,15 +1,22 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Container from 'react-bootstrap/Container';
 
 export function UserInfo(props) {
+    const [user, setUser] = useState({
+        name: {
+            first: '',
+            last: ''
+        }
+    });
+
     const {getRandomUser} = props;
 
     useEffect(() => {
         console.log('page loaded');
-        getRandomUser();
+        getRandomUser().then((newUser) => {setUser(newUser)});
     }, [getRandomUser]);
 
     return (
-        <Container>UserInfo</Container>
+        <Container>{user.name.first}</Container>
     );
 }
