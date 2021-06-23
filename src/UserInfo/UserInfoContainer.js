@@ -1,15 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { UserInfo } from './UserInfo';
 
 export function UserInfoContainer(props) {
+    const [user, setUser] = useState({
+        name: {
+            first: '',
+            last: ''
+        }
+    });
+
     const getRandomUser = async () => {
         const url = 'https://randomuser.me/api';
-        const response = await fetch(url);
-        const jsonResponse = await response.json();
-        return jsonResponse.results[0];
+        try {
+            const response = await fetch(url);
+            const jsonResponse = await response.json();
+            return jsonResponse.results[0];
+        } catch (e) {
+            console.error(e);
+        }
     }
 
+    useEffect(() => {
+        console.log('page loaded');
+        getRandomUser().then((newUser) => {setUser(newUser)});
+    }, []);
+
     return (
-        <UserInfo getRandomUser={getRandomUser}></UserInfo>
+        <UserInfo 
+        user={user}
+        ></UserInfo>
     );
 }
