@@ -14,10 +14,8 @@ export function UserProfile(props) {
         <Container fluid>
             <Row className="flex-nowrap">
                 <Col lg={2}><UserInfoCard user={user} /></Col>
-                <Col lg={4}>
-                    <UserDetailsCard user={user} />
-                    <FriendsListContainer />
-                </Col>
+                <Col lg={4}><UserDetailsCard user={user} /></Col>
+                <Col lg={1}><FriendsListContainer /></Col>
             </Row>
         </Container>
     );

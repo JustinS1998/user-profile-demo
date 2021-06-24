@@ -5,22 +5,23 @@ import {FriendsList} from './FriendsList';
 export function FriendsListContainer(props) {
     const [friends, setFriends] = useState([]);
     const getFriends = async () => {
-        const url = 'https://randomuser.me/api/?';
-        const options = 'results=5';
-        const endpoint = url + options;
-        const response = await fetch(endpoint);
+        const url = 'https://randomuser.me/api/?results=5';
+        const response = await fetch(url);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        return await response.json();
-    };
+        const jsonResponse = await response.json();
+        return jsonResponse.results;
+    }
 
     useEffect(() => {
-        // getFriends.then((newFriends) => {setFriends([...newFriends])});
-        //getFriends.then(()=>console.log('friends loaded'));
+        getFriends().then((newFriends) => { setFriends([...newFriends]) })
+        .catch((error) => console.error(error));
     }, []);
 
     return (
-        <FriendsList friends={friends} />
+        <>
+        {(friends.length > 0) ? <FriendsList friends={friends} /> : <p>Loading friends</p>}
+        </>
     );
 }
