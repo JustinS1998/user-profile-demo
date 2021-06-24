@@ -1,19 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import {UserProfile} from './UserProfile';
+import { UserProfile } from './UserProfile';
 
 export function UserProfileContainer(props) {
-    const emptyUser = {
-        name:{
-            first:'',
-            last:''
-        },
-        picture:{
-            large:'',
-            medium:'',
-            thumnail:''
-        }
-    };
-    const [user, setUser] = useState(emptyUser);
+    const [user, setUser] = useState(null);
 
     const getRandomUser = async () => {
         const url = 'https://randomuser.me/api';
@@ -23,18 +12,18 @@ export function UserProfileContainer(props) {
             return jsonResponse.results[0];
         } catch (e) {
             console.error(e);
-            return emptyUser;
+            return null;
         }
     }
 
     useEffect(() => {
         console.log('page loaded');
-        getRandomUser().then((newUser) => {setUser(newUser)});
+        getRandomUser().then((newUser) => { setUser(newUser) });
     }, []);
 
     return (
-        <UserProfile 
-        user={user}
-        ></UserProfile>
+        <>
+            {(user !== null) ? <UserProfile user={user}></UserProfile> : <p>Loading</p>}
+        </>
     );
 }

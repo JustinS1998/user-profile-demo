@@ -4,14 +4,14 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 export function UserDetailsCard(props) {
     const { user } = props;
-    const { name } = user;
+    const { name, location } = user;
     return (
         <ListGroup>
-            <ListGroup.Item>Full Name</ListGroup.Item>
-            <ListGroup.Item>Email</ListGroup.Item>
-            <ListGroup.Item>Phone</ListGroup.Item>
-            <ListGroup.Item>Cell</ListGroup.Item>
-            <ListGroup.Item>Address</ListGroup.Item>
+            <ListGroup.Item><strong>Full Name</strong> {name.first} {name.last}</ListGroup.Item>
+            <ListGroup.Item><strong>Email</strong> {user.email}</ListGroup.Item>
+            <ListGroup.Item><strong>Phone</strong> {user.phone}</ListGroup.Item>
+            <ListGroup.Item><strong>Cell</strong> {user.cell}</ListGroup.Item>
+            <ListGroup.Item><strong>Address</strong> {location.street.number} {location.street.name}, {location.city}, {location.state}</ListGroup.Item>
         </ListGroup>
     );
 }
