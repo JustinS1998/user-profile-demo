@@ -3,27 +3,24 @@ import { UserProfile } from './UserProfile';
 
 export function UserProfileContainer(props) {
     const [user, setUser] = useState(null);
-
     const getRandomUser = async () => {
         const url = 'https://randomuser.me/api';
-        try {
-            const response = await fetch(url);
-            const jsonResponse = await response.json();
-            return jsonResponse.results[0];
-        } catch (e) {
-            console.error(e);
-            return null;
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
+        const jsonResponse = await response.json();
+        return jsonResponse.results[0];
     }
 
     useEffect(() => {
-        console.log('page loaded');
-        getRandomUser().then((newUser) => { setUser(newUser) });
+        getRandomUser().then((newUser) => { setUser(newUser) })
+        .catch((error) => console.error(error));
     }, []);
 
     return (
         <>
-            {(user !== null) ? <UserProfile user={user}></UserProfile> : <p>Loading</p>}
+            {(user) ? <UserProfile user={user}></UserProfile> : <p>Loading</p>}
         </>
     );
 }
