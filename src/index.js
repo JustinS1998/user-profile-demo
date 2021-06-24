@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import {UserProfile} from './UserProfile';
+import {UserProfileContainer} from './UserProfile/UserProfileContainer';
 
 function App(props) {
     return (
-        <UserProfile />
+        <UserProfileContainer />
     );
 }
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { UserInfoCard } from './UserInfoCard';
+import {UserProfile} from './UserProfile';
 
-export function UserInfoContainer(props) {
+export function UserProfileContainer(props) {
     const emptyUser = {
         name:{
             first:'',
@@ -33,8 +33,8 @@ export function UserInfoContainer(props) {
     }, []);
 
     return (
-        <UserInfoCard 
+        <UserProfile 
         user={user}
-        ></UserInfoCard>
+        ></UserProfile>
     );
 }
