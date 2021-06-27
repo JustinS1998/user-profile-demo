@@ -8,13 +8,15 @@ import Card from 'react-bootstrap/Card';
 export function FriendsList(props) {
     const { friends } = props;
     return (
-        <Container style={{border:'solid black 1px'}}>
-            <Row className='flex-nowrap'>
+        <Container style={{border:'solid lightgrey 1px', borderRadius:'5px'}}>
+            <h2 style={{fontSize:'20px'}}>Friends</h2>
+            {/* <Row className='flex-nowrap'> */}
+            <Row>
                 {friends.map((element) => {
                     return (
-                        <Col lg={4}>
+                        <Col lg={2}>
                             <Card>
-                                <Card.Img src={element.picture.thumbnail}/>
+                                <Card.Img src={element.picture.large}/>
                                 <Card.Body>
                                     <Card.Title style={{fontSize:'15px'}}>{element.name.first} {element.name.last}</Card.Title>
                                 </Card.Body>
