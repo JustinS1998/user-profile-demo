@@ -12,10 +12,9 @@ export function UserProfile(props) {
     const {user} = props;
     return (
         <Container fluid>
-            {/* <Row className="flex-nowrap"> */}
             <Row>
-                <Col lg={4}><UserInfoCard user={user} /></Col>
-                <Col lg={8}>
+                <Col sm={3}><UserInfoCard user={user} /></Col>
+                <Col sm={9}>
                     <UserDetailsCard user={user} />
                     <FriendsListContainer />
                 </Col>
