@@ -14,7 +14,8 @@ export function FriendsList(props) {
                 <Row>
                     {friends.map((element) => {
                         return (
-                            <Col sm={2}>
+                            <Col xl={2} lg={3} md={4} sm={5} xs={6}
+                            style={{marginBottom:'10px'}}>
                                 <Card>
                                     <Card.Img src={element.picture.large} />
                                     <Card.Body>

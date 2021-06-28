@@ -13,8 +13,8 @@ export function UserProfile(props) {
     return (
         <Container fluid>
             <Row>
-                <Col sm={3}><UserInfoCard user={user} /></Col>
-                <Col sm={9}>
+                <Col md={3}><UserInfoCard user={user} /></Col>
+                <Col md={9}>
                     <UserDetailsCard user={user} />
                     <FriendsListContainer />
                 </Col>
