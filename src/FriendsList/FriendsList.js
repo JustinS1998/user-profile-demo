@@ -8,7 +8,7 @@ import Card from 'react-bootstrap/Card';
 export function FriendsList(props) {
     const { friends } = props;
     return (
-        <Card>
+        <Card style={{paddingTop:'10px', paddingBottom:'10px'}}>
             <Container>
                 <h2 style={{ fontSize: '20px' }}>Friends</h2>
                 <Row>
